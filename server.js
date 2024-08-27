@@ -19,7 +19,7 @@ app.post('/submit', async (req, res) => {
     );
     res.status(response.status).send(response.data);
   } catch (error) {
-    console.error('Error occurred:', error); // Log lỗi để kiểm tra
+    console.error('Error occurred:', error); // Log lỗi chi tiết
     res.status(error.response?.status || 500).send(error.message);
   }
 });
