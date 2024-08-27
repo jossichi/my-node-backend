@@ -1,20 +1,20 @@
-# Use the official Node.js image
+# Sử dụng image Node.js chính thức
 FROM node:18
 
-# Create and set working directory
-WORKDIR /app
+# Tạo thư mục ứng dụng
+WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
+# Sao chép package.json và package-lock.json
 COPY package*.json ./
 
-# Install dependencies
+# Cài đặt dependencies
 RUN npm install
 
-# Copy application code
+# Sao chép mã nguồn
 COPY . .
 
-# Expose the port the app runs on
+# Expose cổng ứng dụng
 EXPOSE 3001
 
-# Command to run the app
-CMD ["npm", "start"]
+# Khởi chạy ứng dụng
+CMD ["node", "server.js"]
