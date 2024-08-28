@@ -13,9 +13,8 @@ RUN npm install
 # Sao chép toàn bộ mã nguồn vào thư mục làm việc
 COPY . .
 
-# Mở cổng 3001 để container có thể tiếp nhận kết nối từ bên ngoài
+# Mở cổng 8080 để container có thể tiếp nhận kết nối từ bên ngoài
 EXPOSE 8080
 
 # Chạy ứng dụng khi container khởi động
-CMD ["node", "server.js"]
-
+CMD ["npm", "start"]
