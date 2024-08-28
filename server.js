@@ -6,7 +6,11 @@ const app = express();
 const port = process.env.PORT || 8080; 
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: '*', // Thay đổi theo domain frontend cụ thể nếu cần
+  methods: ['GET', 'POST'],
+}));
+
 app.use(express.json());
 
 // Chuyển hướng từ '/' sang '/submit'
