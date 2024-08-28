@@ -3,18 +3,18 @@ const cors = require('cors');
 const axios = require('axios');
 const app = express();
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080; 
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Chuyển hướng từ '/' tới trang Google Sheets
+// Chuyển hướng từ '/' sang '/submit'
 app.get('/', (req, res) => {
   res.redirect('https://docs.google.com/spreadsheets/d/1YsT6ByxNGYZ9db1IRbucPHfD4kTY2DVo9aOiWzZIgNA/edit?usp=sharing');
 });
 
-// Endpoint GET /submit để trả về thông báo khi người dùng truy cập bằng GET
+// Endpoint GET /submit để trả về một thông báo
 app.get('/submit', (req, res) => {
   res.send('This endpoint is for POST requests only. Please submit data using POST.');
 });
@@ -34,4 +34,3 @@ app.post('/submit', async (req, res) => {
 app.listen(port, () => {
   console.log(`Proxy server running at http://localhost:${port}`);
 });
-
