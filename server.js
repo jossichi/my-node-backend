@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 
 // Middleware
 app.use(cors({
-  origin: '*', 
+  origin: 'https://hubsaigonquiz.netlify.app', 
   methods: ['GET', 'POST'],
 }));
 
