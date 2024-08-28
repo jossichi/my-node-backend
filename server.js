@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 
 // Middleware
 app.use(cors({
-  origin: '*', // Thay đổi theo domain frontend cụ thể nếu cần
+  origin: '*', 
   methods: ['GET', 'POST'],
 }));
 
@@ -27,10 +27,14 @@ app.get('/submit', (req, res) => {
 app.post('/submit', async (req, res) => {
   try {
     const response = await axios.post('https://script.google.com/macros/s/AKfycbyfMMwAq8O2L-qBRAsHJN-k8pRCEeRgmLL7Yl46XWE6-xx-a-knQH3MI5sE7PxZQWAnCw/exec', req.body);
-    res.status(response.status).send(response.data);
+    if (response.status === 200) {
+      res.status(200).send({ message: 'Data successfully saved' });
+    } else {
+      res.status(response.status).send({ message: 'Failed to save data' });
+    }
   } catch (error) {
     console.error('Error occurred:', error.message);
-    res.status(error.response?.status || 500).send(error.message);
+    res.status(error.response?.status || 500).send({ message: error.message });
   }
 });
 
