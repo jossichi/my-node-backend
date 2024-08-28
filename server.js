@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Route cho GET request tại đường dẫn gốc
 app.get('/', (req, res) => {
-  res.send('Welcome to the backend server!');
+  res.redirect('/submit');
 });
 
 // Endpoint để nhận dữ liệu và gửi đến Google Sheets
