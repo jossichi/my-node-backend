@@ -1,20 +1,21 @@
-# Sử dụng hình ảnh Node.js
+# Sử dụng Node.js phiên bản 18 chính thức từ Docker Hub
 FROM node:18
 
-# Thiết lập thư mục làm việc
+# Tạo và đặt thư mục làm việc trong container
 WORKDIR /app
 
-# Sao chép tệp package.json và package-lock.json
+# Sao chép package.json và package-lock.json để cài đặt dependencies trước
 COPY package*.json ./
 
-# Cài đặt các dependencies
+# Cài đặt các dependencies cần thiết
 RUN npm install
 
-# Sao chép mã nguồn
+# Sao chép toàn bộ mã nguồn vào thư mục làm việc
 COPY . .
 
-# Chỉ định cổng chạy ứng dụng
+# Mở cổng 3001 để container có thể tiếp nhận kết nối từ bên ngoài
 EXPOSE 8080
 
-# Chạy ứng dụng
-CMD ["npm", "start"]
+# Chạy ứng dụng khi container khởi động
+CMD ["node", "server.js"]
+
