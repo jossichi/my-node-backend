@@ -5,7 +5,6 @@ const app = express();
 
 const port = process.env.PORT || 8080; 
 
-// Middleware
 app.use(cors({
   origin: 'https://hubsaigonquiz.netlify.app', 
   methods: ['GET', 'POST'],
@@ -38,7 +37,6 @@ app.post('/submit', async (req, res) => {
   }
 });
 
-// Khởi chạy server
 app.listen(port, () => {
   console.log(`Proxy server running at http://localhost:${port}`);
 });
